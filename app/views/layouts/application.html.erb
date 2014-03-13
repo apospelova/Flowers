@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flowers</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+
+	<title>Flowers</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
+	<style type="text/css">
+		body{
+			margin: 0 0 0 45px;
+		}
+		table{
+			width: 560px;
+		}
+	</style>
 </head>
 <body>
 
-<%= yield %>
+	<%= yield %>
 
 </body>
 </html>

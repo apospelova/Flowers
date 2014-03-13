@@ -1,0 +1,47 @@
+<h1> Flower party</h1>
+<%= form_for @flower do |f| %>
+<p>
+	<%= f.label :color %><br>
+	<%= f.color_field :color%>
+</p>
+<p>
+	<%= f.label :name %><br>
+	<%= f.text_field :name%>
+</p>
+<p>
+	<%= f.label :price %><br>
+	<%= f.text_field :price%>
+</p>
+<p>
+	<%= f.label :date_of_cut %><br>
+	<%= f.datetime_field :date_of_cut %>
+</p>
+<div class="btn-group">
+	<button type="button" class="btn btn-default"><%= f.submit %></button>
+</div>
+
+<% if params[:order] == "name ASC" %>
+<% current_short = "name DESC"%>
+<% else %>
+	<% current_short = "name ASC"%>
+<%end%>
+
+<table>
+	<tr>
+		<th><%= link_to 'Name +', flowers_path(order: current_short) %> </th>
+		<th><%= link_to 'Color +', flowers_path(order: "color ASC") %><%= link_to '-', flowers_path(order: "color DESC") %></th>
+		<th><%= link_to 'Price +', flowers_path(order: "price ASC") %><%= link_to '-', flowers_path(order: "price DESC") %></th>
+		<th><%= link_to 'Date of cut +', flowers_path(order: "date_of_cut ASC") %><%= link_to '-', flowers_path(order: "date_of_cut DESC") %></th>
+	</tr>
+	<% @flowers.each do |flw| %>
+	<tr>
+		<td><%= flw.name %></td>
+		<td><%= flw.color %></td>
+		<td><%= flw.price %></td>
+		<td><%= flw.date_of_cut%></td>
+		<td><%= link_to 'Destroy', flower_path(flw.id), method: :delete %> </td>
+	</tr> 
+	<%end%>
+</table>
+
+<% end %>
